@@ -1,34 +1,13 @@
 "use strict";
 
-class StringBuilder {
-  #value = "";
+const getInput = document.querySelector("#name-input");
 
-  constructor(value) {
-    this.#value = value;
+const getName = document.querySelector("#name-output");
+
+getInput.addEventListener("input", (event) => {
+  if (getInput.value.trim() !== "") {
+    getName.textContent = getInput.value.trim();
+  } else {
+    getName.textContent = "Anonymous";
   }
-
-  getValue() {
-    return this.#value;
-  }
-
-  padEnd(str) {
-    return (this.#value += str);
-  }
-
-  padStart(str) {
-    return (this.#value = str + this.#value);
-  }
-
-  padBoth(str) {
-    return (this.#value = str + this.#value + str);
-  }
-}
-
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // "."
-builder.padStart("^");
-console.log(builder.getValue()); // "^."
-builder.padEnd("^");
-console.log(builder.getValue()); // "^.^"
-builder.padBoth("=");
-console.log(builder.getValue()); // "=^.^="
+});
